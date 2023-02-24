@@ -1,0 +1,48 @@
+import random
+
+print("Permainan Tebak Kata")
+with open ("kata.txt", 'r') as fp :
+    lines = len(fp.readlines())
+    print('Total Number of lines: ', lines)
+if(lines>0):
+    nilairand=random.randint(1, lines)
+    file = open('kata.txt')
+    
+    #read the content of the opened file
+    content = file.readlines()
+    hint1=content[nilairand-1]
+    with open("nilai.txt", 'r') as fp1:
+        data=fp1.read()
+        if(data!=""):
+            print("Top Score Saat ini : ")
+        else :
+            print("Belum ada Top Score Saat ini")
+    print("Petunjuk:")
+    hint1=hint1.split(',')
+    print(hint1[0])
+    katatebak=hint1[1].replace('\n','')
+    jumlahhuruf=len(katatebak)
+    print("Kata yang ditebak ada: ", jumlahhuruf, "huruf")
+    benar=0
+    for i in range(jumlahhuruf):
+        cobatebak=input("Tebakan ke "+str(i+1)+": ")
+        cobatebak=cobatebak.lower()
+        
+        if (katatebak==cobatebak):
+            print("Tebakan benar")
+            if(i==0):
+                topscorename=input("Siapa nama anda: ")
+                file = open('kata.txt', 'w')
+                file.close()
+                with open('nilai.txt', 'w') as f:
+                    f.write(topscorename)
+            else :
+                print("Anda belum mencetak Top Score")
+            break
+        else :
+            cobatebak=""
+            print("Masih salah")
+else :
+    print("File Empty")
+    
+#kata.txt dan nilai.txt adalah file terpisah yang berada di dalam folder yang sama dengan folder kode
