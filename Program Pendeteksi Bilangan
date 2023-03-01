@@ -1,0 +1,8 @@
+print("Program Deteksi Bilangan")
+bil1 = input("Masukan bilangan :")
+if bil1 == 0:
+  print("Ini Bilangan cacah")
+elif bil1 > 0:
+  print("Ini Bilangan Positif")
+elif bil1 < 0:
+  print("Ini Bilangan Negatif")
